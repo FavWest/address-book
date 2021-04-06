@@ -23,6 +23,44 @@
     <title>Address Book</title>
   </head>
   <body>
-    <div class="container"></div>
+    <div class="container">
+      <div class="row>">
+        <div class="col-12">
+          <form id="contactInput">
+            <input type="text" id="firstName" placeholder="First Name" />
+            <input type="text" id="lastName" placeholder="Last Name" />
+            <input type="email" id="email" placeholder="Email Address" />
+            <input type="tel" id="phoneNumber" placeholder="Phone Number" />
+            <div class="block">
+              <input type="text" id="physical-address" placeholder="Address" />
+              <input type="text" id="city" placeholder="City" />
+              <input type="text" id="state" placeholder="State" />
+              <input type="text" id="zip" placeholder="Zip Code" />
+            </div>
+            <button type="submit" class="btn btn-dark">submit</button>
+          </form>
+        </div>
+      </div>
+
+      
+      <div class="row>">
+        <div class="col-12" id="output">
+          <h2>Contacts:</h2>
+  <ul id="contacts">
+  </ul>
+
+  <div id="show-contact">
+    <p>First Name: <span class="first-name"></span></p>
+    <p>Last Name: <span class="last-name"></span></p>
+    <p>Phone Number: <span class="phone-number"></span></p>
+    <p>Email: <span class="email-address"></span></p>
+    <p>Address: <span class="full-physical-address"></span></p>
+    <div id="buttons">
+    </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
+

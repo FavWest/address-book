@@ -29,10 +29,15 @@ AddressBook.prototype.deleteContact = function(id) {
   return true;
 }
 // Business Logic for Contacts
-function Contact(firstName, lastName, phoneNumber) {
+function Contact(firstName, lastName, phoneNumber, email, physicalAddress, city, state, zip) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
+  this.email = email;
+  this.allAddresses = {1:{"physicalAddress":physicalAddress,
+                                "city":city,
+                                "state":state,
+                                "zip": zip}};
 }
 
 Contact.prototype.fullName = function() {
@@ -40,8 +45,36 @@ Contact.prototype.fullName = function() {
 }
 
 let addressBook = new AddressBook();
-let contact = new Contact("Jerry", "Sullivan", "4568675309");
-let contact2 =  new Contact("Steve", "Pitts", "8885882300");
-addressBook.addContact(contact);
-addressBook.addContact(contact2);
-addressBook.deleteContact(2);
+
+
+//UI logic
+$(document).ready(function() {
+$("form#contactInput").submit(function(event) {
+  event.preventDefault()
+  
+  const firstName = $("input#firstName").val()
+  const lastName = $("input#lastName").val()
+  const phoneNumber = $("input#phoneNumber").val()
+  const email = $("input#email").val()
+  const physicalAddress = $("input#physical-address").val();
+  const city = $("input#city").val();
+  const state = $("input#state").val();
+  const zip = $("input#zip").val();
+  const newContact = new Contact(firstName, lastName, phoneNumber, email, physicalAddress, city, state, zip);
+  addressBook.addContact(newContact);
+  
+  function contactOutput (){
+   $("span.first-name").text(addressBook.contacts[1].firstName)
+   $("span.last-name").text(addressBook.contacts[1].lastName)
+   $("span.phone-number").text(addressBook.contacts[1].phoneNumber)
+   $("span.email-address").text(addressBook.contacts[1].email)
+   $("span.full-physical-address").html(addressBook.contacts[1].allAddresses[1].physicalAddress + "<br>" +
+            addressBook.contacts[1].allAddresses[1].city + " " + addressBook.contacts[1].allAddresses[1].state + " " +
+            addressBook.allAddresses[1].home.contacts[1].zip)
+  }
+  contactOutput();
+
+  })
+
+
+})
