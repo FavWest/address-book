@@ -32,11 +32,19 @@
             <input type="email" id="email" placeholder="Email Address" />
             <input type="tel" id="phoneNumber" placeholder="Phone Number" />
             <div class="block">
-              <input type="text" id="physical-address" placeholder="Address" />
-              <input type="text" id="city" placeholder="City" />
-              <input type="text" id="state" placeholder="State" />
-              <input type="text" id="zip" placeholder="Zip Code" />
+              <label title="Home" for="inputHomeAddress" class="home relationInput">Home</label>
+              <input type="text" id="physical-address inputHomeAddress" placeholder="Address" />
+              <input type="text" id="city inputHomeAddress" placeholder="City" />
+              <input type="text" id="state inputHomeAddress" placeholder="State" />
+              <input type="text" id="zip inputHomeAddress" placeholder="Zip Code" />
             </div>
+            <div class="block">
+              <label title="Work" for="inputWorkAddress" class="work relationInput">Work</label>
+              <input type="text" id="physical-address inputWorkAddress" placeholder="Address" />
+              <input type="text" id="city inputWorkAddress" placeholder="City" />
+              <input type="text" id="state inputWorkAddress" placeholder="State" />
+              <input type="text" id="zip inputWorkAddress" placeholder="Zip Code" />
+          </div>
             <button type="submit" class="btn btn-dark">submit</button>
           </form>
         </div>
