@@ -4,8 +4,6 @@ function AddressBook() {
   this.currentId = 0;
 }
 
-
-
 AddressBook.prototype.addContact = function(contact){
   contact.id = this.assignId();
   this.contacts[contact.id] = contact;
@@ -30,18 +28,21 @@ AddressBook.prototype.deleteContact = function(id) {
   delete this.contacts[id];
   return true;
 }
+
 // Business Logic for Contacts
-function Contact(firstName, lastName, phoneNumber, email, physicalAddress, city, state, zip) {
+function Contact(firstName, lastName, phoneNumber, email) {
   this.firstName = firstName;
   this.lastName = lastName;
   this.phoneNumber = phoneNumber;
   this.email = email;
-  this.allAddresses = {1:{"physicalAddress":physicalAddress,
-                                "city":city,
-                                "state":state,
-                                "zip": zip}};
+  this.allAddresses = {};
 }
 
+Contact.prototype.fullName = function() {
+  return this.firstName + " " + this.lastName;
+}
+
+// Business Logic for Addresses
 function Address (relation, physicalAddress, city, state, zip) {
   this.relation = relation;
   this.physicalAddress = physicalAddress;
@@ -51,42 +52,39 @@ function Address (relation, physicalAddress, city, state, zip) {
 }
 
 Contact.prototype.addAddress = function(address){
-  this.allAddresses[relation] = address;
+  let id =  address.relation;
+  this.allAddresses[id] = address;
 }
 
-Contact.prototype.fullName = function() {
-  return this.firstName + " " + this.lastName;
-}
 
 let addressBook = new AddressBook();
-
 
 //UI logic
 $(document).ready(function() {
 $("form#contactInput").submit(function(event) {
   event.preventDefault()
   
-  const firstName = $("input#firstName").val()
-  const lastName = $("input#lastName").val()
-  const phoneNumber = $("input#phoneNumber").val()
-  const email = $("input#email").val()
+  const firstName = $("input#firstName").val();
+  const lastName = $("input#lastName").val();
+  const phoneNumber = $("input#phoneNumber").val();
+  const email = $("input#email").val();
 
-  const homePhysicalAddress = $("input#physical-address#inputHomeAddress").val();
-  const homeCity = $("input#city#inputHomeAddress").val();
-  const homeState = $("input#state#inputHomeAddress").val();
-  const homeZip = $("input#zip#inputHomeAddress").val();
+  const homePhysicalAddress = $(".physical-address.inputHomeAddress").val();
+  const homeCity = $(".city.inputHomeAddress").val();
+  const homeState = $(".state.inputHomeAddress").val();
+  const homeZip = $(".zip.inputHomeAddress").val();
+  console.log($(".state.inputHomeAddress").val());
 
-
-  const workPhysicalAddress = $("input#physical-address#inputWorkAddress").val();
-  const workCity = $("input#city#inputWorkAddress").val();
-  const workState = $("input#state#inputWorkAddress").val();
-  const workZip = $("input#zip#inputWorkAddress").val();
+  const workPhysicalAddress = $(".physical-address.inputWorkAddress").val();
+  const workCity = $(".city.inputWorkAddress").val();
+  const workState = $(".state.inputWorkAddress").val();
+  const workZip = $(".zip.inputWorkAddress").val();
   const newAddress1 = new Address("Home", homePhysicalAddress, homeCity, homeState, homeZip);
   const newAddress2 = new Address("Work", workPhysicalAddress, workCity, workState, workZip);
-  const newContact = new Contact(firstName, lastName, phoneNumber, email, addresses);
+  const newContact = new Contact(firstName, lastName, phoneNumber, email);
 
-  addressBook.Contact.addAddress(newAddress1);
-  addressBook.Contact.addAddress(newAddress2);
+  newContact.addAddress(newAddress1);
+  newContact.addAddress(newAddress2);
   addressBook.addContact(newContact);
   
   
@@ -95,11 +93,12 @@ $("form#contactInput").submit(function(event) {
    $("span.last-name").text(addressBook.contacts[1].lastName)
    $("span.phone-number").text(addressBook.contacts[1].phoneNumber)
    $("span.email-address").text(addressBook.contacts[1].email)
+    console.log(addressBook.contacts[1].allAddresses.Home.physicalAddress);
    $("span.full-physical-address").html(
-            addressBook.contacts[1].allAddresses[1].physicalAddress + "<br>" +
-            addressBook.contacts[1].allAddresses[1].city + " " + 
-            addressBook.contacts[1].allAddresses[1].state + " " +
-            addressBook.contacts[1].allAddresses[1].zip)
+            addressBook.contacts[1].allAddresses.Home.physicalAddress + "<br>" +
+            addressBook.contacts[1].allAddresses.Home.city + " " + 
+            addressBook.contacts[1].allAddresses.Home.state + " " +
+            addressBook.contacts[1].allAddresses.Home.zip)
   }
   contactOutput();
 
