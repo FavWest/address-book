@@ -1,0 +1,22 @@
+.container {
+  padding: 15px;
+}
+label {
+  font-weight: bold;
+}
+input {
+  margin: 5px 5px 10px 5px;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#formBox {
+  border-width: 1px;
+  border-style: solid;
+  padding: 25px;
+}

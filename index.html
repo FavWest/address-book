@@ -24,35 +24,38 @@
   </head>
   <body>
     <div class="container">
-      <div class="row>">
-        <div class="col-12">
+      <div class="row justify-content-center">
+        <div class="col-md-8" id="formBox">
           <form id="contactInput">
-            <input type="text" id="firstName" placeholder="First Name" />
-            <input type="text" id="lastName" placeholder="Last Name" />
-            <input type="email" id="email" placeholder="Email Address" />
-            <input type="tel" id="phoneNumber" placeholder="Phone Number" />
+            <input type="text" id="firstName" placeholder="First Name" required/>
+            <input type="text" id="lastName" placeholder="Last Name" required/>
+            <input type="email" id="email" placeholder="Email Address" required/>
+            <input type="tel" id="phoneNumber" placeholder="Phone Number" required/>
+            <hr>
             <div class="block">
-              <label title="Home" for="inputHomeAddress" class="home relationInput">Home</label>
+              <label title="Home" for="inputHomeAddress" class="home relationInput">Home</label><br>
               <input type="text" class="physical-address inputHomeAddress" placeholder="Address" />
               <input type="text" class="city inputHomeAddress" placeholder="City" />
               <input type="text" class="state inputHomeAddress" placeholder="State" />
               <input type="text" class="zip inputHomeAddress" placeholder="Zip Code" />
             </div>
+            <hr>
             <div class="block">
-              <label title="Work" for="inputWorkAddress" class="work relationInput">Work</label>
+              <label title="Work" for="inputWorkAddress" class="work relationInput">Work</label><br>
               <input type="text" class="physical-address inputWorkAddress" placeholder="Address" />
               <input type="text" class="city inputWorkAddress" placeholder="City" />
               <input type="text" class="state inputWorkAddress" placeholder="State" />
               <input type="text" class="zip inputWorkAddress" placeholder="Zip Code" />
-          </div>
             <button type="submit" class="btn btn-dark">submit</button>
           </form>
+        </div>
+
         </div>
       </div>
 
       
-      <div class="row>">
-        <div class="col-12" id="output">
+      <div class="row justify-content-center">
+        <div class="col-md-8" id="output">
           <h2>Contacts:</h2>
   <ul id="contacts">
   </ul>
@@ -62,7 +65,8 @@
     <p>Last Name: <span class="last-name"></span></p>
     <p>Phone Number: <span class="phone-number"></span></p>
     <p>Email: <span class="email-address"></span></p>
-    <p>Address: <span class="full-physical-address"></span></p>
+    <p>Home Address: <span class="home-physical-address"></span></p>
+    <p>Work Address: <span class="work-physical-address"></span></p>
     <div id="buttons">
     </div>
         </div>

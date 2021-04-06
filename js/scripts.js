@@ -57,6 +57,8 @@ Contact.prototype.addAddress = function(address){
 }
 
 
+
+
 let addressBook = new AddressBook();
 
 //UI logic
@@ -94,11 +96,18 @@ $("form#contactInput").submit(function(event) {
    $("span.phone-number").text(addressBook.contacts[1].phoneNumber)
    $("span.email-address").text(addressBook.contacts[1].email)
     console.log(addressBook.contacts[1].allAddresses.Home.physicalAddress);
-   $("span.full-physical-address").html(
+   $("span.home-physical-address").html( 
             addressBook.contacts[1].allAddresses.Home.physicalAddress + "<br>" +
             addressBook.contacts[1].allAddresses.Home.city + " " + 
             addressBook.contacts[1].allAddresses.Home.state + " " +
-            addressBook.contacts[1].allAddresses.Home.zip)
+            addressBook.contacts[1].allAddresses.Home.zip
+            );
+   $("span.work-physical-address").html(
+            addressBook.contacts[1].allAddresses.Work.physicalAddress + "<br>" +
+            addressBook.contacts[1].allAddresses.Work.city + " " + 
+            addressBook.contacts[1].allAddresses.Work.state + " " +
+            addressBook.contacts[1].allAddresses.Work.zip
+   );
   }
   contactOutput();
 
